@@ -41,7 +41,7 @@ var articles=
                         I am currently working in imad console.
                     </p>`
 }
-}
+};
 
 function createTemplate(data){
     var title=data.title;
