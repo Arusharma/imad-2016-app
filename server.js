@@ -19,7 +19,7 @@ var articles=
                         I am currently working in imad console.
                     </p>`
 },
-'articletwo':{
+'article-two':{
     title:'Article Two|Arunima Sharma',
             heading:'Article Two',
             date:'10th October 2016',
