@@ -8,7 +8,7 @@ app.use(morgan('combined'));
 
 var articles=
 {
-        articleOne:{
+        'article-one':{
             title:'Article One|Arunima Sharma',
             heading:'Article One',
             date:'10th October 2016',
@@ -19,7 +19,7 @@ var articles=
                         I am currently working in imad console.
                     </p>`
 },
-articleTwo:{
+'articletwo':{
     title:'Article Two|Arunima Sharma',
             heading:'Article Two',
             date:'10th October 2016',
@@ -30,7 +30,7 @@ articleTwo:{
                         I am currently working in imad console.
                     </p>`
 },
-articleThree:{
+'article-three':{
     title:'Article Three|Arunima Sharma',
             heading:'Article Three',
             date:'10th October 2016',
@@ -89,18 +89,11 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
+app.get('/:articleName', function (req, res) {
+  res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
+var articleName=req.params.articleName;
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
