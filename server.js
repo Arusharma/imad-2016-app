@@ -27,49 +27,27 @@ var articles=
                     </p>`
 },
 'article-two':{
-
     title:'Article Two|Arunima Sharma',
-
             heading:'Article Two',
-
             date:'10th October 2016',
-
             content:`<p>
-
                         This is the content for my second article..
-
                     </p>
-
                     <p>
-
                         I am currently working in imad console.
-
                     </p>`
-
 },
-
 'article-three':{
-
     title:'Article Three|Arunima Sharma',
-
             heading:'Article Three',
-
             date:'10th October 2016',
-
             content:`<p>
-
                         This is the content for my third article..
-
                     </p>
-
                     <p>
-
                         I am currently working in imad console.
-
-                    </p>`
-
+                    </p>
 }
-
 };
 
 
@@ -162,8 +140,8 @@ app.get('/articles/:articleName', function (req, res) {
                 res.status(404).send('article not found');
             }else
             {
-                var articleDate=result.rows[0];
-                res.send(createTemplate(articleDate));
+                var articleData=result.rows[0];
+                res.send(createTemplate(articleData));
             }
         }
     });
