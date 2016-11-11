@@ -10,28 +10,19 @@ var config = {
 
     host: 'db.imad.hasura-app.io',
 
-  user: 'mounya246',
+  user: 'arusharma',
 
   port:'5432',
 
   password: process.env.DB_PASSWORD,
 
-  database: 'mounya246',
+  database: 'arusharma',
 
 };
 
 var app = express();
 
 app.use(morgan('combined'));
-
-
-
-
-
-
-
-
-
 
 var articles=
 
