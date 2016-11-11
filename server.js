@@ -14,42 +14,7 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles=
-{
-        'article-one':{
-            title:'Article One|Arunima Sharma',
-            heading:'Article One',
-            date:'10th October 2016',
-            content:`<p>
-                        This is the content for my first article..
-                    </p>
-                    <p>
-                        I am currently working in imad console.
-                    </p>`
-},
-'article-two':{
-    title:'Article Two|Arunima Sharma',
-            heading:'Article Two',
-            date:'10th October 2016',
-            content:`<p>
-                        This is the content for my second article..
-                    </p>
-                    <p>
-                        I am currently working in imad console.
-                    </p>`
-},
-'article-three':{
-    title:'Article Three|Arunima Sharma',
-            heading:'Article Three',
-            date:'10th October 2016',
-            content:`<p>
-                        This is the content for my third article..
-                    </p>
-                    <p>
-                        I am currently working in imad console.
-                    </p>`
-}
-};
+
 
 function createTemplate(data){
     var title=data.title;
