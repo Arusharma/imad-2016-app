@@ -32,7 +32,7 @@ var articles=
 
         'article-one':{
 
-            title:'Article One|MOUNYA',
+            title:'Article One|arunima',
 
             heading:'Article One',
 
