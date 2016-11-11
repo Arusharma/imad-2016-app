@@ -5,6 +5,7 @@ var morgan = require('morgan');
 var path = require('path');
 
 var Pool = require('pg').Pool;
+var crypto=require('crypto');
 
 var config = {
 
@@ -96,6 +97,17 @@ app.get('/', function (req, res) {
 
 });
 
+function hash(input)
+{
+    var hashed=crypto.pbkdfSync(input,salt,10000,512,'sho512');
+    return hashed.toString('hex');
+}
+
+app/get('/hash/:input',function(req,res)
+{
+    var hashedString =hash(req.params,input,'this-is-some-random-string');
+    res.send(hashedString);
+});
 var pool = new Pool(config);
 app.get('/test-db',function(req,res)
 
@@ -125,17 +137,12 @@ var counter=0;
 app.get('/counter',function (req,res)
 
 {
-
     counter=counter+1;
-
     res.send(counter.toString());
-
 });
 
 app.get('/ui/style.css', function (req, res) {
-
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
-
 });
 var names=[];
 
@@ -153,9 +160,6 @@ app.get('/submit-name',function(req,res){
 
 
 app.get('/articles/:articleName', function (req, res) {
-
-    
-
     pool.query("SELECT * FROM article WHERE title = $1",[req.params.articleName],function(err,result)
 
     {
