@@ -6,9 +6,7 @@ var path = require('path');
 
 var Pool = require('pg').Pool;
 var crypto=require('crypto');
-
 var config = {
-
     host: 'db.imad.hasura-app.io',
 
   user: 'arusharma',
@@ -99,7 +97,7 @@ app.get('/', function (req, res) {
 
 function hash(input)
 {
-    var hashed=crypto.pbkdfSync(input,salt,10000,512,'sho512');
+    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sho512');
     return hashed.toString('hex');
 }
 
@@ -207,11 +205,6 @@ app.get('/articles/:articleName', function (req, res) {
   
 
 });
-
-
-
-
-
 
 
 app.get('/ui/madi.png', function (req, res) {
