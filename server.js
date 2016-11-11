@@ -23,84 +23,6 @@ var config = {
 var app = express();
 
 app.use(morgan('combined'));
-
-var articles=
-
-{
-
-    
-
-        'article-one':{
-
-            title:'Article One|arunima',
-
-            heading:'Article One',
-
-            date:'10th October 2016',
-
-            content:`<p>
-
-                        This is the content for my first article..
-
-                    </p>
-
-                    <p>
-
-                        I am currently working in imad console.
-
-                    </p>`
-
-},
-
-'article-two':{
-
-    title:'Article Two|mounya',
-
-            heading:'Article Two',
-
-            date:'10th October 2016',
-
-            content:`<p>
-
-                        This is the content for my second article..
-
-                    </p>
-
-                    <p>
-
-                        I am currently working in imad console.
-
-                    </p>`
-
-},
-
-'article-three':{
-
-    title:'Article Three|mounya',
-
-            heading:'Article Three',
-
-            date:'10th October 2016',
-
-            content:`<p>
-
-                        This is the content for my third article..
-
-                    </p>
-
-                    <p>
-
-                        I am currently working in imad console.
-
-                    </p>`
-
-}
-
-};
-
-
-
-
 function createTemplate(data){
 
     var title=data.title;
@@ -110,10 +32,6 @@ function createTemplate(data){
     var date=data.date;
 
     var content=data.content;
-
-
-
-
 var htmlTemplate=`
 
 <html>
@@ -172,14 +90,6 @@ return htmlTemplate;
 
 }
 
-    
-
-
-
-
-
-
-
 app.get('/', function (req, res) {
 
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -187,10 +97,6 @@ app.get('/', function (req, res) {
 });
 
 var pool = new Pool(config);
-
-
-
-
 app.get('/test-db',function(req,res)
 
 {
@@ -212,9 +118,6 @@ app.get('/test-db',function(req,res)
         }
 
     });
-
-    
-
 });
 
 var counter=0;
@@ -229,18 +132,11 @@ app.get('/counter',function (req,res)
 
 });
 
-
-
-
 app.get('/ui/style.css', function (req, res) {
 
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 
 });
-
-
-
-
 var names=[];
 
 app.get('/submit-name',function(req,res){
@@ -260,7 +156,7 @@ app.get('/articles/:articleName', function (req, res) {
 
     
 
-    pool.query("SELECT * FROM article WHERE title ='"+req.params.articleName +"'",function(err,result)
+    pool.query("SELECT * FROM article WHERE title = $1",[req.params.articleName],function(err,result)
 
     {
 
